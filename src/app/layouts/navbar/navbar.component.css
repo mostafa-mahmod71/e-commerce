@@ -1,0 +1,4 @@
+.link-active {
+  color: var(--color-mainc);
+  background-color: var(--color-secc) 50%;
+}

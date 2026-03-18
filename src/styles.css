@@ -1,3 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+@import 'flowbite/src/themes/default';
+
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@utility container {
+  margin-inline: auto;
+}
+@theme {
+  --color-mainc: #16a34a;
+  --color-secc: #101828;
+  --color-danger: #fb2c36;
+}
+
+@font-face {
+  font-family: 'exo';
+  src: url('/font/Exo-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+}
+* {
+  font-family: 'exo', sans-serif !important;
+}
