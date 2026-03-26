@@ -1,1 +1,144 @@
-<p>categories works!</p>
+<section class="py-10">
+  <div class="max-w-9.5/10 container px-3">
+    <div class="flex items-center gap-x-3 mb-6">
+      <div class="w-2 h-10 bg-mainc rounded-full"></div>
+      <h2 class="text-3xl font-semibold">Shop By <span class="text-mainc"> Category</span></h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 p-4">
+      @for (categ of categories(); track categ._id) {
+        <div
+          (click)="getOneCateg(categ._id)"
+          class="w-full shadow rounded-lg p-5 border border-gray-100 cursor-pointer hover:scale-120 hover:bg-gray-50 transition-all"
+        >
+          <div class="rounded-full mx-auto size-20 overflow-hidden">
+            <img class="w-full h-full object-cover" [src]="categ.image" [alt]="categ.name" />
+          </div>
+          <p class="text-center mt-4 text-gray-700 font-medium">{{ categ.name }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- category details  -->
+    <div>
+      @if (selectedCategory()) {
+        <div class="max-w-9.5/10 container px-3 mb-10 animate-fade-up">
+          <div
+            class="bg-white border-2 border-mainc/10 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden"
+          >
+            <button
+              (click)="selectedCategory.set(null)"
+              class="absolute cursor-pointer top-4 right-4 text-gray-400 hover:text-danger transition-colors"
+            >
+              <i class="fa-solid fa-circle-xmark text-2xl"></i>
+            </button>
+
+            <div class="w-100 rounded-3xl overflow-hidden shadow-md flex-shrink-0">
+              <img
+                [src]="selectedCategory()?.image"
+                [alt]="selectedCategory()?.name"
+                class="w-full h-full rounded-3xl object-cover border-4 border-white"
+              />
+            </div>
+
+            <div class="text-center md:text-left flex-grow">
+              <h3 class="text-4xl font-bold text-secc mb-2">{{ selectedCategory()?.name }}</h3>
+              <p class="text-gray-500 text-lg mb-4 italic">#{{ selectedCategory()?.slug }}</p>
+
+              <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                <span
+                  class="bg-mainc/10 text-mainc px-4 py-1 rounded-full text-sm font-medium border border-mainc/20"
+                >
+                  Created: {{ selectedCategory()?.createdAt }}
+                </span>
+                <span
+                  class="bg-gray-100 text-gray-600 px-4 py-1 rounded-full text-sm font-medium border border-gray-200"
+                >
+                  ID: {{ selectedCategory()?._id?.substring(0, 8) }}...
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4 pt-8 font-sans bg-gray-50">
+      <div
+        class="relative overflow-hidden rounded-2xl bg-linear-to-br from-[#12a664] to-[#088a50] p-8 text-white shadow-lg"
+      >
+        <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/10 blur-[2px]"></div>
+        <div
+          class="absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-black/5 blur-[2px]"
+        ></div>
+
+        <div class="relative z-10 flex flex-col h-full">
+          <div
+            class="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-sm font-medium mb-4 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-fire text-orange-400"></i> Deal of the Day
+          </div>
+
+          <h2 class="text-3xl font-bold mb-2 tracking-tight">Fresh Organic Fruits</h2>
+          <p class="text-white/90 text-sm mb-6">Get up to 40% off on selected organic fruits</p>
+
+          <div class="flex items-center gap-3 mb-8">
+            <span class="text-3xl font-extrabold tracking-tight">40% OFF</span>
+            <span class="text-sm text-white/90 mt-1">
+              Use code: <span class="font-bold text-white tracking-wide">ORGANIC40</span>
+            </span>
+          </div>
+
+          <div class="mt-auto">
+            <a
+              href="#"
+              class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#088a50] transition hover:bg-gray-100 shadow-sm"
+            >
+              Shop Now
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="relative overflow-hidden rounded-2xl bg-linear-to-br from-[#ff8736] via-[#fe5c4e] to-[#ff2b6b] p-8 text-white shadow-lg"
+      >
+        <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/10 blur-[2px]"></div>
+        <div
+          class="absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-black/5 blur-[2px]"
+        ></div>
+
+        <div class="relative z-10 flex flex-col h-full">
+          <div
+            class="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-sm font-medium mb-4 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-hand-sparkles text-yellow-300"></i> New Arrivals
+          </div>
+
+          <h2 class="text-3xl font-bold mb-2 tracking-tight">Exotic Vegetables</h2>
+          <p class="text-white/90 text-sm mb-6">
+            Discover our latest collection of premium vegetables
+          </p>
+
+          <div class="flex items-center gap-3 mb-8">
+            <span class="text-3xl font-extrabold tracking-tight">25% OFF</span>
+            <span class="text-sm text-white/90 mt-1">
+              Use code: <span class="font-bold text-white tracking-wide">FRESH25</span>
+            </span>
+          </div>
+
+          <div class="mt-auto">
+            <a
+              href="#"
+              class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#f25c4e] transition hover:bg-gray-100 shadow-sm"
+            >
+              Explore Now
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

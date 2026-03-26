@@ -1,0 +1,17 @@
+.animate-fade-up {
+  /* قللنا الوقت لـ 0.6 ثانية عشان متبقاش تقيلة وتعمل خضة */
+  animation: fadeUp 2s ease-out;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 1000px;
+  }
+}

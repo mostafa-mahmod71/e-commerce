@@ -36,7 +36,7 @@ export const routes: Routes = [
     title: 'wish List',
   },
   {
-    path: 'details',
+    path: 'details/:id/:slug',
     loadComponent: () =>
       import('./features/details/details.component').then((m) => m.DetailsComponent),
     title: 'details',

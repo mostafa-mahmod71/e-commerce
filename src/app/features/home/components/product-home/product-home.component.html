@@ -16,7 +16,7 @@
               class="w-full h-auto object-contain"
             />
 
-            <!--  ! ----------- Icons  Heart ! ----------- ....  -->
+            <!--  ! ----------- Icons  Heart reload details ! ----------- ....  -->
             <div class="absolute top-2 right-2 flex flex-col gap-2">
               <button
                 class="w-10 h-10 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-emerald-600 hover:text-white transition-all"
@@ -31,6 +31,7 @@
               </button>
 
               <button
+                [routerLink]="['/details', product._id, product.slug]"
                 class="w-10 cursor-pointer h-10 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-emerald-600 hover:text-white transition-all"
               >
                 <i class="far fa-eye"></i>
@@ -52,8 +53,10 @@
                 @for (star of starArr; track $index) {
                   @if (star <= product.ratingsAverage) {
                     <i class="fas fa-star"></i>
+                  } @else if (star - product.ratingsAverage < 1) {
+                    <i class="fa-solid fa-star-half-stroke"></i>
                   } @else {
-                    <i class="far fa-star text-gray-300"></i>
+                    <i class="far fa-star text-gray"></i>
                   }
                 }
               </div>
